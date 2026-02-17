@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>想 -Omou- | インスタプロデュース</title>
+  <meta name="description" content="お届けしたいのは、SNSの先の人との繋がり。あなたの想いを本気でかたちにし、届け続けます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #FDFBF8;
+      --color-bg-warm: #F7F3ED;
+      --color-bg-accent: #F0EBE3;
+      --color-text: #3C3632;
+      --color-text-light: #6B6360;
+      --color-text-muted: #9B9490;
+      --color-accent: #C4A882;
+      --color-accent-deep: #A68B6B;
+      --color-accent-soft: #D8C8B0;
+      --color-line: #E0D8CE;
+      --color-white: #FFFFFF;
+      --color-terracotta: #C8907A;
+      --color-terracotta-soft: rgba(200, 144, 122, 0.12);
+      --color-sage: #8FA68F;
+      --color-sage-soft: rgba(143, 166, 143, 0.10);
+      --color-dusty-rose: #C09B9B;
+      --color-dusty-rose-soft: rgba(192, 155, 155, 0.10);
+      --font-serif-ja: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif;
+      --font-serif-en: 'Cormorant Garamond', serif;
+      --font-sans-ja: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      font-size: 16px; scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-serif-ja); color: var(--color-text);
+      background-color: var(--color-bg); line-height: 2;
+      letter-spacing: 0.08em; overflow-x: hidden;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Section Label（②フォントサイズUP） ===== */
+    .section-label { text-align: center; margin-bottom: 56px; }
+    .section-label span {
+      font-family: var(--font-serif-en); font-size: 0.95rem; font-weight: 400;
+      letter-spacing: 0.3em; color: var(--color-text-muted); text-transform: uppercase;
+      display: inline-block; position: relative; padding: 0 24px;
+    }
+    .section-label span::before,
+    .section-label span::after {
+      content: ''; position: absolute; top: 50%; width: 40px; height: 1px;
+      background: var(--color-line);
+    }
+    .section-label span::before { right: 100%; }
+    .section-label span::after { left: 100%; }
+
+    /* ===== Fade-in ===== */
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+    }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.15s; }
+    .fade-in-delay-2 { transition-delay: 0.3s; }
+    .fade-in-delay-3 { transition-delay: 0.45s; }
+    .fade-in-delay-4 { transition-delay: 0.6s; }
+    .fade-in-delay-5 { transition-delay: 0.75s; }
+
+    /* ===== Header ===== */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0; transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+    }
+    .header.is-scrolled {
+      background: rgba(253, 251, 248, 0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0; box-shadow: 0 1px 0 var(--color-line);
+    }
+    .header-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-family: var(--font-serif-ja); font-size: 1.1rem; font-weight: 500;
+      color: var(--color-text); text-decoration: none; letter-spacing: 0.15em;
+    }
+    .logo small {
+      font-family: var(--font-serif-en); font-size: 0.65rem; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--color-text-muted); display: block; margin-top: -2px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-serif-en); font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.15em; color: var(--color-text-light);
+      text-decoration: none; text-transform: uppercase; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--color-terracotta); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 28px; height: 20px; position: relative;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 1px; background: var(--color-text);
+      position: absolute; left: 0; transition: all 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; }
+    .hamburger span:nth-child(3) { bottom: 0; }
+    .hamburger.is-active span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { bottom: 50%; transform: rotate(-45deg); }
+
+    /* ===== Hero（④キャッチコピー修正） ===== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 60%, rgba(200, 144, 122, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 30%, rgba(143, 166, 143, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(196, 168, 130, 0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-title-en {
+      font-family: var(--font-serif-en); font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300; font-style: italic; letter-spacing: 0.08em;
+      color: var(--color-accent); line-height: 1; margin-bottom: 8px;
+      opacity: 0; transform: translateY(20px);
+      animation: heroFadeUp 1.2s var(--ease-out-expo) 0.3s forwards;
+    }
+    .hero-title-ja {
+      font-family: var(--font-serif-ja); font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+      font-weight: 300; letter-spacing: 0.4em; color: var(--color-text-muted);
+      margin-bottom: 48px; opacity: 0;
+      animation: heroFadeUp 1.2s var(--ease-out-expo) 0.5s forwards;
+    }
+    .hero-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--color-accent-soft), var(--color-terracotta));
+      margin: 0 auto 48px; opacity: 0;
+      animation: heroFadeUp 1.2s var(--ease-out-expo) 0.6s forwards;
+    }
+    .hero-catch {
+      font-family: var(--font-serif-ja); font-size: clamp(1rem, 2.2vw, 1.35rem);
+      font-weight: 300; line-height: 2.4; color: var(--color-text); letter-spacing: 0.12em;
+      opacity: 0; animation: heroFadeUp 1.2s var(--ease-out-expo) 0.8s forwards;
+    }
+    .hero-em { font-weight: 500; color: var(--color-terracotta); }
+    @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero-scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: heroFadeUp 1.2s var(--ease-out-expo) 1.4s forwards;
+    }
+    .hero-scroll span {
+      font-family: var(--font-serif-en); font-size: 0.6rem;
+      letter-spacing: 0.2em; color: var(--color-text-muted); writing-mode: vertical-rl;
+    }
+    .hero-scroll::after {
+      content: ''; width: 1px; height: 40px; background: var(--color-accent-soft);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      50.1% { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ===== Message（①改行崩れ修正） ===== */
+    .message { padding: 120px 24px; background: var(--color-bg-warm); }
+    .message-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .message-text {
+      font-size: 0.95rem; font-weight: 300; line-height: 2.6;
+      color: var(--color-text); letter-spacing: 0.08em;
+    }
+    .message-text p { margin-bottom: 2.5em; }
+    .message-text p:last-child { margin-bottom: 0; }
+    .message-highlight {
+      font-weight: 600; color: var(--color-terracotta);
+      background: linear-gradient(transparent 70%, rgba(200, 144, 122, 0.18) 70%);
+      padding: 0 2px;
+    }
+    /* brをモバイルで非表示にして自然折り返し */
+    .br-pc { display: inline; }
+    @media (max-width: 540px) {
+      .br-pc { display: none; }
+    }
+
+    /* ===== Recommend（③番号拡大＋アイコン） ===== */
+    .recommend { padding: 120px 24px; position: relative; }
+    .recommend::before {
+      content: ''; position: absolute; top: 60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: var(--color-sage-soft); filter: blur(60px); pointer-events: none;
+    }
+    .recommend::after {
+      content: ''; position: absolute; bottom: 40px; left: -40px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: var(--color-dusty-rose-soft); filter: blur(50px); pointer-events: none;
+    }
+    .recommend-lead {
+      text-align: center; font-size: 1.15rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--color-text); margin-bottom: 56px;
+    }
+    .recommend-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      max-width: 720px; margin: 0 auto; position: relative; z-index: 1;
+    }
+    .recommend-card {
+      background: var(--color-white); border: 1px solid var(--color-line);
+      border-radius: 4px; padding: 28px 24px;
+      transition: box-shadow 0.4s, transform 0.4s;
+    }
+    .recommend-card:hover {
+      box-shadow: 0 8px 32px rgba(60, 54, 50, 0.06); transform: translateY(-2px);
+    }
+    .recommend-card-head {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .recommend-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+      background: var(--color-bg-warm);
+    }
+    .recommend-num {
+      font-family: var(--font-serif-en); font-size: 0.9rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--color-accent);
+    }
+    .recommend-card p {
+      font-size: 0.88rem; font-weight: 400; line-height: 1.9; color: var(--color-text);
+    }
+
+    /* ===== Service（⑤ディバイダー削除） ===== */
+    .service { padding: 120px 24px; background: var(--color-bg-warm); }
+    .service-lead {
+      text-align: center; font-size: 0.95rem; font-weight: 300; line-height: 2.2;
+      color: var(--color-text-light); margin-bottom: 72px; max-width: 600px;
+      margin-left: auto; margin-right: auto;
+    }
+    .service-list { max-width: 680px; margin: 0 auto 80px; }
+    .service-item {
+      display: flex; gap: 20px; padding: 28px 0;
+      border-bottom: 1px solid var(--color-line); align-items: flex-start;
+    }
+    .service-item:first-child { border-top: 1px solid var(--color-line); }
+    .service-num {
+      font-family: var(--font-serif-en); font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--color-white); background: var(--color-accent);
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .service-item.is-advance .service-num { background: var(--color-terracotta); }
+    .service-item-content h3 {
+      font-size: 1rem; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--color-text); margin-bottom: 6px;
+    }
+    .service-item-content p {
+      font-family: var(--font-sans-ja); font-size: 0.82rem; font-weight: 300;
+      line-height: 2; color: var(--color-text-light);
+    }
+
+    /* ===== Plan & Price + 比較表（⑥） ===== */
+    .course-section { max-width: 720px; margin: 0 auto; }
+    .course-title {
+      text-align: center; font-family: var(--font-serif-en); font-size: 0.95rem;
+      font-weight: 400; letter-spacing: 0.25em; color: var(--color-text-muted); margin-bottom: 40px;
+    }
+    .course-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 48px; }
+    .course-card {
+      background: var(--color-white); border: 1px solid var(--color-line);
+      border-radius: 4px; padding: 40px 28px; text-align: center;
+      position: relative; overflow: hidden; transition: box-shadow 0.4s;
+    }
+    .course-card:hover { box-shadow: 0 12px 40px rgba(60, 54, 50, 0.08); }
+    .course-card.is-premium { border-color: var(--color-terracotta); }
+    .course-card.is-premium::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--color-accent-soft), var(--color-terracotta));
+    }
+    .course-badge {
+      display: inline-block; font-family: var(--font-sans-ja); font-size: 0.65rem;
+      font-weight: 500; letter-spacing: 0.1em; color: var(--color-accent-deep);
+      background: rgba(196, 168, 130, 0.12); padding: 4px 14px;
+      border-radius: 2px; margin-bottom: 16px;
+    }
+    .course-card.is-premium .course-badge {
+      color: var(--color-terracotta); background: var(--color-terracotta-soft);
+    }
+    .course-name {
+      font-size: 1.05rem; font-weight: 500; letter-spacing: 0.12em;
+      color: var(--color-text); margin-bottom: 16px;
+    }
+    .course-price {
+      font-family: var(--font-serif-en); font-size: 1.8rem; font-weight: 400;
+      color: var(--color-text); line-height: 1; margin-bottom: 4px;
+    }
+    .course-price small { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.05em; }
+    .course-period {
+      font-family: var(--font-sans-ja); font-size: 0.72rem;
+      color: var(--color-text-muted); margin-bottom: 8px;
+    }
+    .course-note { font-family: var(--font-sans-ja); font-size: 0.65rem; color: var(--color-text-muted); }
+    .course-limited {
+      display: inline-block; font-family: var(--font-sans-ja); font-size: 0.68rem;
+      color: var(--color-terracotta); margin-top: 12px; font-weight: 500;
+    }
+
+    /* 比較表 */
+    .compare-table-wrap {
+      max-width: 600px; margin: 0 auto;
+      background: var(--color-white); border: 1px solid var(--color-line);
+      border-radius: 4px; overflow: hidden;
+    }
+    .compare-table {
+      width: 100%; border-collapse: collapse;
+      font-family: var(--font-sans-ja); font-size: 0.8rem;
+    }
+    .compare-table thead th {
+      padding: 16px 12px; font-weight: 500; font-size: 0.78rem;
+      letter-spacing: 0.08em; color: var(--color-text);
+      border-bottom: 2px solid var(--color-line); background: var(--color-bg);
+      text-align: center;
+    }
+    .compare-table thead th:first-child { text-align: left; padding-left: 20px; }
+    .compare-table thead th.th-standard { color: var(--color-accent-deep); }
+    .compare-table thead th.th-advance { color: var(--color-terracotta); }
+    .compare-table tbody td {
+      padding: 14px 12px; border-bottom: 1px solid var(--color-bg-accent);
+      text-align: center; color: var(--color-text-light); font-weight: 300;
+      font-size: 0.78rem; vertical-align: middle;
+    }
+    .compare-table tbody td:first-child {
+      text-align: left; padding-left: 20px; color: var(--color-text); font-weight: 400;
+    }
+    .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 50%;
+      font-size: 0.75rem; font-weight: 500;
+    }
+    .compare-mark.is-yes {
+      color: var(--color-sage); background: var(--color-sage-soft);
+    }
+    .compare-mark.is-no {
+      color: var(--color-text-muted); background: transparent;
+    }
+
+    /* ===== Profile ===== */
+    .profile { padding: 120px 24px; position: relative; }
+    .profile::before {
+      content: ''; position: absolute; top: 50%; left: -80px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: var(--color-sage-soft); filter: blur(80px);
+      transform: translateY(-50%); pointer-events: none;
+    }
+    .profile-inner {
+      max-width: 680px; margin: 0 auto; display: flex; gap: 48px;
+      align-items: flex-start; position: relative; z-index: 1;
+    }
+    .profile-photo {
+      width: 200px; min-width: 200px; aspect-ratio: 3 / 4;
+      background: linear-gradient(135deg, var(--color-bg-accent), var(--color-bg-warm));
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted); font-family: var(--font-serif-en);
+      font-size: 0.7rem; letter-spacing: 0.15em; border: 1px solid var(--color-line);
+    }
+    .profile-body { flex: 1; }
+    .profile-motto {
+      font-size: 0.88rem; font-weight: 400; color: var(--color-terracotta);
+      margin-bottom: 20px; letter-spacing: 0.08em;
+    }
+    .profile-name-ja { font-size: 1.2rem; font-weight: 500; letter-spacing: 0.15em; margin-bottom: 4px; }
+    .profile-name-en {
+      font-family: var(--font-serif-en); font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.15em; color: var(--color-text-muted); margin-bottom: 16px;
+    }
+    .profile-titles {
+      font-family: var(--font-sans-ja); font-size: 0.72rem;
+      color: var(--color-text-muted); line-height: 1.8; margin-bottom: 24px;
+    }
+    .profile-bio {
+      font-family: var(--font-sans-ja); font-size: 0.82rem; font-weight: 300;
+      line-height: 2.2; color: var(--color-text-light);
+    }
+
+    /* ===== CTA（⑦Zoomテキスト削除） ===== */
+    .cta {
+      padding: 100px 24px;
+      background: linear-gradient(135deg, var(--color-bg-warm) 0%, #F4EDE4 50%, #F2EBE2 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: var(--color-terracotta-soft); filter: blur(50px); pointer-events: none;
+    }
+    .cta::after {
+      content: ''; position: absolute; bottom: -40px; left: -40px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: var(--color-sage-soft); filter: blur(40px); pointer-events: none;
+    }
+    .cta .container { position: relative; z-index: 1; }
+    .cta-text {
+      font-size: 1.1rem; font-weight: 400; letter-spacing: 0.12em;
+      line-height: 2.4; color: var(--color-text); margin-bottom: 48px;
+    }
+    .cta-button {
+      display: inline-block; font-family: var(--font-serif-ja); font-size: 0.88rem;
+      font-weight: 400; letter-spacing: 0.2em; color: var(--color-white);
+      background: linear-gradient(135deg, var(--color-accent-deep), var(--color-terracotta));
+      padding: 20px 56px; border-radius: 2px; text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.4s, opacity 0.3s;
+    }
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(200, 144, 122, 0.3); opacity: 0.92;
+    }
+
+    /* ===== Footer ===== */
+    .footer { padding: 48px 24px; text-align: center; border-top: 1px solid var(--color-line); }
+    .footer-logo {
+      font-family: var(--font-serif-en); font-size: 1rem; font-weight: 300;
+      font-style: italic; letter-spacing: 0.15em; color: var(--color-accent); margin-bottom: 8px;
+    }
+    .footer-copy {
+      font-family: var(--font-serif-en); font-size: 0.65rem; font-weight: 300;
+      letter-spacing: 0.15em; color: var(--color-text-muted);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.is-open {
+        display: flex; flex-direction: column; position: fixed; inset: 0;
+        background: rgba(253, 251, 248, 0.97);
+        backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        justify-content: center; align-items: center; gap: 40px; z-index: 99;
+      }
+      .nav-links.is-open a { font-size: 1rem; }
+      .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
+      .course-cards { grid-template-columns: 1fr; }
+      .profile-inner { flex-direction: column; align-items: center; text-align: center; }
+      .profile-photo { width: 160px; min-width: unset; }
+      .hero { padding: 100px 24px 80px; }
+      .message, .recommend, .service, .profile, .cta { padding: 80px 24px; }
+      .message-text { font-size: 0.88rem; line-height: 2.4; }
+
+      .compare-table { font-size: 0.75rem; }
+      .compare-table thead th { padding: 12px 8px; font-size: 0.72rem; }
+      .compare-table tbody td { padding: 12px 8px; font-size: 0.72rem; }
+      .compare-table tbody td:first-child { padding-left: 14px; }
+      .compare-table thead th:first-child { padding-left: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .recommend-card { padding: 24px 20px; }
+      .course-card { padding: 32px 20px; }
+      .cta-button { padding: 18px 40px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">想<small>-Omou-</small></a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#service">Service</a></li>
+          <li><a href="#price">Price</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ④ Hero：キャッチコピー修正 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title-en">Omou</h1>
+      <p class="hero-title-ja">インスタプロデュース</p>
+      <div class="hero-line"></div>
+      <p class="hero-catch">
+        お届けしたいのは<br>
+        <span class="hero-em">「SNSの先の、人との繋がり。」</span>
+      </p>
+    </div>
+    <div class="hero-scroll"><span>Scroll</span></div>
+  </section>
+
+  <!-- ① Message：brをPC用クラスにして、スマホでは自然折返し -->
+  <section class="message">
+    <div class="message-inner">
+      <div class="section-label fade-in"><span>Message</span></div>
+      <div class="message-text fade-in fade-in-delay-1">
+        <p>私は、あなたの想いを<br class="br-pc">本気でかたちにし、届け続けます。</p>
+        <p>「何がバズるかな？」<br>「どうやって魅せよう」<br>「煽った方がみんな見てくれるよね？」</p>
+        <p>そんな気持ちは一回横に置いて、<br class="br-pc">あなたが届けたい<span class="message-highlight">想い</span>を聞かせてほしいのです。</p>
+        <p>熱い想いを胸に<br class="br-pc">サービスを届けているあなた。<br>その想いは、言葉は、声は、<br>届けたい人に届いていますか？</p>
+        <p>届ける先の<span class="message-highlight">両思い</span>での繋がりで、<br class="br-pc">もっと飛躍を。<br>あなたのサービスを一緒に届ける<br class="br-pc">相棒であり続けます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ Recommend：番号拡大＋アイコン -->
+  <section class="recommend" id="recommend">
+    <div class="container">
+      <div class="section-label fade-in"><span>For You</span></div>
+      <p class="recommend-lead fade-in fade-in-delay-1">こんな方へ</p>
+      <div class="recommend-grid">
+        <div class="recommend-card fade-in fade-in-delay-1">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">🌱</div>
+            <span class="recommend-num">01</span>
+          </div>
+          <p>インスタを始めたいけれど、何から手をつけたらいいかわからない</p>
+        </div>
+        <div class="recommend-card fade-in fade-in-delay-2">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">💌</div>
+            <span class="recommend-num">02</span>
+          </div>
+          <p>届けたい想いはあるのに、SNSでの届け方がわからない</p>
+        </div>
+        <div class="recommend-card fade-in fade-in-delay-3">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">⏳</div>
+            <span class="recommend-num">03</span>
+          </div>
+          <p>忙しくてインスタについて考える時間がなかなか取れない</p>
+        </div>
+        <div class="recommend-card fade-in fade-in-delay-4">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">🎯</div>
+            <span class="recommend-num">04</span>
+          </div>
+          <p>サービスを本当に届けたい人へ、きちんと届けていきたい</p>
+        </div>
+        <div class="recommend-card fade-in fade-in-delay-5">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">🤝</div>
+            <span class="recommend-num">05</span>
+          </div>
+          <p>同じ熱量で想いをかたちにしてくれる相棒が欲しい</p>
+        </div>
+        <div class="recommend-card fade-in fade-in-delay-5">
+          <div class="recommend-card-head">
+            <div class="recommend-icon">✨</div>
+            <span class="recommend-num">06</span>
+          </div>
+          <p>ただ数字を伸ばすのではなく、「想い」を大切にSNSを使いたい</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ Service：ディバイダー削除、03→04地続き -->
+  <section class="service" id="service">
+    <div class="container">
+      <div class="section-label fade-in"><span>Service</span></div>
+      <p class="service-lead fade-in fade-in-delay-1">
+        7つのサポートを通して、あなたの想いを<br class="br-pc">インスタグラムを通して届けていきます。
+      </p>
+      <div class="service-list">
+        <div class="service-item fade-in">
+          <span class="service-num">01</span>
+          <div class="service-item-content">
+            <h3>想いのヒアリング</h3>
+            <p>あなたの想いを知ることから始まります。まずはZOOMを通して、届けたい想いをお聞かせください。</p>
+          </div>
+        </div>
+        <div class="service-item fade-in">
+          <span class="service-num">02</span>
+          <div class="service-item-content">
+            <h3>リール企画・制作</h3>
+            <p>あなたの想いを形にするための手段として「リール」を活用。企画から編集まで伴走します。</p>
+          </div>
+        </div>
+        <div class="service-item fade-in">
+          <span class="service-num">03</span>
+          <div class="service-item-content">
+            <h3>インサイト分析</h3>
+            <p>適切に想いが届くよう、データを分析しながら改善を重ねていきます。</p>
+          </div>
+        </div>
+        <div class="service-item is-advance fade-in">
+          <span class="service-num">04</span>
+          <div class="service-item-content">
+            <h3>ストーリー戦略</h3>
+            <p>リールで出会ったお客様と信頼関係を築く大切な場所が「ストーリー」。一歩踏み込んでフォロワーさんとの信頼を構築します。</p>
+          </div>
+        </div>
+        <div class="service-item is-advance fade-in">
+          <span class="service-num">05</span>
+          <div class="service-item-content">
+            <h3>コンセプト設計</h3>
+            <p>大切なのは、木の葉っぱでなく幹であること。流行りに惑わされない、ブレないアカウントのコンセプトを設計します。</p>
+          </div>
+        </div>
+        <div class="service-item is-advance fade-in">
+          <span class="service-num">06</span>
+          <div class="service-item-content">
+            <h3>アカウント設計</h3>
+            <p>プロフィールやハイライトの設計も含め、アカウント全体を一気通貫で整えていきます。</p>
+          </div>
+        </div>
+        <div class="service-item is-advance fade-in">
+          <span class="service-num">07</span>
+          <div class="service-item-content">
+            <h3>発信における撮影</h3>
+            <p>企画から編集まですべてお任せいただけます。素材がない方、撮影方法がわからない方にもおすすめです。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑥ Plan & Price + 比較表 -->
+      <div class="course-section" id="price">
+        <div class="course-title fade-in">– Plan & Price –</div>
+        <div class="course-cards">
+          <div class="course-card fade-in fade-in-delay-1">
+            <div class="course-badge">Standard</div>
+            <h3 class="course-name">スタンダードコース</h3>
+            <p class="course-price">¥300,000 <small>（税込）</small></p>
+            <p class="course-period">3ヶ月間</p>
+            <p class="course-note">※カード決済の場合、別途手数料がかかります</p>
+          </div>
+          <div class="course-card is-premium fade-in fade-in-delay-2">
+            <div class="course-badge">Advance</div>
+            <h3 class="course-name">アドバンスコース</h3>
+            <p class="course-price">¥600,000 <small>（税込）</small></p>
+            <p class="course-period">3ヶ月間</p>
+            <p class="course-note">※カード決済の場合、別途手数料がかかります</p>
+            <span class="course-limited">※ 1名限定・空き状況はお問い合わせください</span>
+          </div>
+        </div>
+
+        <!-- 比較表 -->
+        <div class="compare-table-wrap fade-in">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>サポート内容</th>
+                <th class="th-standard">Standard</th>
+                <th class="th-advance">Advance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>想いのヒアリング</td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>リール企画・制作</td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>インサイト分析</td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>ストーリー戦略</td>
+                <td><span class="compare-mark is-no">−</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>コンセプト設計</td>
+                <td><span class="compare-mark is-no">−</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>アカウント設計</td>
+                <td><span class="compare-mark is-no">−</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+              <tr>
+                <td>発信における撮影</td>
+                <td><span class="compare-mark is-no">−</span></td>
+                <td><span class="compare-mark is-yes">◯</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section class="profile" id="profile">
+    <div class="container">
+      <div class="section-label fade-in"><span>Profile</span></div>
+      <div class="profile-inner fade-in fade-in-delay-1">
+        <div class="profile-photo">Photo</div>
+        <div class="profile-body">
+          <p class="profile-motto">「想いを形に、より温かく」</p>
+          <h2 class="profile-name-ja">西方 まどか</h2>
+          <p class="profile-name-en">Madoka Nishikata</p>
+          <p class="profile-titles">
+            感情のタイムカプセル -おもいばこ- 代表<br>
+            TODOKU movie. 代表
+          </p>
+          <p class="profile-bio">
+            1994年、大阪府生まれ。大阪市立大学（現：公立大学）卒業後、ウェディング会社に就職。ウェディングプランナーとして約200組の結婚式を手がける。たくさんの温かい家族の想いや言葉に触れるなかで「その言葉や想いそのものを遺したい」と感じ、リクルートライフスタイルを経て独立。
+            <br><br>
+            現在は、感情のタイムカプセル『おもいばこ』で家族の想いを遺す活動を行うほか、動画（リール）編集サポートを通して起業家・フリーランスの方々の想いをかたちにし、届けている。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ CTA：Zoomテキスト削除 -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="section-label fade-in"><span>Contact</span></div>
+      <p class="cta-text fade-in fade-in-delay-1">
+        あなたの想いを聞かせてください。<br>まずはお気軽にご相談ください。
+      </p>
+      <a href="#" class="cta-button fade-in fade-in-delay-2">ご相談・お問い合わせ</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-logo">Omou</p>
+    <p class="footer-copy">&copy; 2025 Omou. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 60);
+    });
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-active');
+      navLinks.classList.toggle('is-open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('is-active');
+        navLinks.classList.remove('is-open');
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
