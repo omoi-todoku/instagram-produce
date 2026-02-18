@@ -62,7 +62,7 @@
     .nav-links a.is-active { color: var(--color-terracotta); border-bottom-color: var(--color-terracotta); font-weight: 500; }
 
     /* ===== Hero ===== */
-    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 80px; position: relative; overflow: visible; }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 160px 24px 80px; position: relative; overflow: visible; }
     .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(200, 144, 122, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 85% 30%, rgba(143, 166, 143, 0.05) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(196, 168, 130, 0.06) 0%, transparent 60%); pointer-events: none; }
     .hero-content { position: relative; z-index: 1; }
     .hero-title-en { font-family: var(--font-serif-en); font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; font-style: italic; letter-spacing: 0.08em; color: var(--color-accent); line-height: 1; margin-bottom: 8px; opacity: 0; transform: translateY(20px); animation: heroFadeUp 1.2s var(--ease-out-expo) 0.3s forwards; }
@@ -209,11 +209,10 @@
       .logo { font-size: 1rem; }
       .logo small { font-size: 0.55rem; }
       .nav-links a { font-size: 0.88rem; letter-spacing: 0.06em; padding: 10px 12px; }
-      .hero { padding: 150px 20px 80px; }
+      .hero { padding: 160px 20px 80px; }
       .course-cards { grid-template-columns: 1fr; }
       .profile-inner { flex-direction: column; align-items: center; text-align: center; }
       .profile-photo { width: 180px; min-width: unset; }
-      .hero { padding: 100px 20px 100px; }
       .message, .recommend, .service, .profile, .cta, .plan-section { padding: 64px 16px; }
       .message-text { font-size: 0.95rem; line-height: 2.4; }
       .worry-card { padding: 24px 24px 24px 72px; }
@@ -266,11 +265,11 @@
     <div class="message-inner">
       <div class="section-label fade-in"><span>Message</span></div>
       <div class="message-text fade-in fade-in-delay-1">
-        <p>私は、あなたの想いを<br class="br-pc">本気でかたちにし、届け続けます。</p>
+        <p>あなたの想いを<br class="br-pc">本気でかたちにし、<br>届け続けます。</p>
         <p>「何がバズるかな？」<br>「どうやって魅せよう」<br>「煽った方がみんな見てくれるよね？」</p>
-        <p>そんな気持ちは一回横に置いて、<br class="br-pc">あなたが届けたい<span class="message-highlight">想い</span>を聞かせてほしいのです。</p>
-        <p>熱い想いを胸に<br class="br-pc">サービスを届けているあなた。<br>その想いは、言葉は、声は、<br>届けたい人に届いていますか？</p>
-        <p>届ける先の<span class="message-highlight">両思い</span>での繋がりで、<br class="br-pc">もっと飛躍を。<br>あなたのサービスを一緒に届ける<br class="br-pc">相棒であり続けます。</p>
+        <p>そんな気持ちは一回横に置いて、<br><br class="br-pc">あなたが届けたい<span class="message-highlight">想い</span>を聞かせてほしいのです。</p>
+        <p>熱い想いを胸に<br class="br-pc">サービスを届けているあなたの<br>その想いは、言葉は、声は、<br>届けたい人に届いていますか？</p>
+        <p>届ける先の<span class="message-highlight">両思い</span>での繋がりで、<br><br class="br-pc">もっと飛躍を。<br>あなたのサービスを一緒に届ける<br><br class="br-pc">パートナーであり続けます。</p>
       </div>
     </div>
   </section>
@@ -279,7 +278,7 @@
   <section class="recommend" id="recommend">
     <div class="container">
       <div class="section-label fade-in"><span>For You</span></div>
-      <p class="recommend-lead fade-in fade-in-delay-1">こんな方へ</p>
+      <p class="recommend-lead fade-in fade-in-delay-1">こんな方におすすめ</p>
       <div class="recommend-list">
 
         <div class="worry-card fade-in">
@@ -319,7 +318,7 @@
   <section class="service" id="service">
     <div class="container">
       <div class="section-label fade-in"><span>Service</span></div>
-      <p class="service-lead fade-in fade-in-delay-1">7つのサポートを通して、あなたの想いを<br class="br-pc">インスタグラムを通して届けていきます。</p>
+      <p class="service-lead fade-in fade-in-delay-1">7つのサポートを通して、<br>あなたの想いを<br class="br-pc">届けていきます。</p>
       <div class="service-grid">
         <div class="service-card fade-in"><div class="service-num-circle"><span>01</span></div><div class="service-card-body"><h3>想いのヒアリング</h3><p>あなたの想いを知ることから始まります。まずはZOOMを通して、届けたい想いをお聞かせください。</p></div></div>
         <div class="service-card fade-in"><div class="service-num-circle"><span>02</span></div><div class="service-card-body"><h3>リール企画・制作</h3><p>あなたの想いを形にするための手段として「リール」を活用。企画から編集まで伴走します。</p></div></div>
