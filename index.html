@@ -71,7 +71,7 @@
     .hero-catch { font-family: var(--font-serif-ja); font-size: clamp(1rem, 2.2vw, 1.35rem); font-weight: 300; line-height: 2.4; color: var(--color-text); letter-spacing: 0.12em; opacity: 0; animation: heroFadeUp 1.2s var(--ease-out-expo) 0.8s forwards; }
     .hero-em { font-weight: 500; color: var(--color-terracotta); }
     @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
-    .hero-scroll { position: absolute; bottom: 0px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: heroFadeUp 1.2s var(--ease-out-expo) 1.4s forwards; z-index: 5; }
+    .hero-scroll { position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: heroFadeUp 1.2s var(--ease-out-expo) 1.4s forwards; z-index: 5; }
     .hero-scroll span { font-family: var(--font-serif-en); font-size: 0.6rem; letter-spacing: 0.2em; color: var(--color-text-muted); writing-mode: vertical-rl; }
     .hero-scroll::after { content: ''; width: 1px; height: 40px; background: var(--color-accent-soft); animation: scrollLine 2s ease-in-out infinite; }
     @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 50.1% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
